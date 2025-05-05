@@ -1,14 +1,16 @@
 defmodule SalaChat do
+
+  def main do
+    IO.puts("Prueba de SalaChat...")
+    unirse_sala("Vanesa", "soporte")
+    enviar_mensaje("soporte", "Vanesa", "¿Hay alguien ahí?")
+  end
   def unirse_sala(usuario, sala) do
-    IO.puts("#{usuario} se ha unido a la sala #{sala}.")
+    ServidorChat.unir_usuario(usuario, sala)
   end
 
   def enviar_mensaje(sala, usuario, mensaje) do
-    AlmacenamientoChat.guardar_mensaje(sala, usuario, mensaje)
+    ServidorChat.enviar_mensaje(sala, usuario, mensaje)
   end
 
-  def main do
-    unirse_sala("Carlos", "soporte")
-    enviar_mensaje("soporte", "Carlos", "¿Hay alguien?")
-  end
 end
